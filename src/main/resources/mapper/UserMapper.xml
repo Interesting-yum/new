@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafuc.ssm.mapper.UserMapper">
+    <resultMap id="userResultMap" type="user">
+        <id column="userId" property="userId" javaType="Integer"/>
+    </resultMap>
+
+    <sql id="list">
+		userId,userName,loginName,password,gender
+	</sql>
+
+    <select id="getAll" resultMap="userResultMap">
+        select <include refid="list"></include> from user
+    </select>
+
+    <delete id="delete" parameterType="Integer">
+        delete from user where userId=#{userId}
+    </delete>
+
+    <insert id="add" parameterType="User">
+        insert into user(userName,loginName,password,gender)
+        values(#{userName},#{loginName},#{password},#{gender})
+    </insert>
+</mapper>
