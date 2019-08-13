@@ -1,2 +1,2 @@
-# new
-for test
+# springboot_redis
+Springboot项目整合redis
